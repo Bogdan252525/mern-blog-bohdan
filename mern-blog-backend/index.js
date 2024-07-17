@@ -13,7 +13,7 @@ import { UserController, PostController } from './controllers/index.js';
 
 app.use(cors(
 	{
-		origin: ["https://mern-blog-bohdan-lwhq.vercel.app"],
+		origin: ["https://mern-blog-frontend-sand.vercel.app"],
 		methods: ["POST", "GET"],
 		credentials: true
 	}
