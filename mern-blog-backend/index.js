@@ -12,14 +12,12 @@ import { handleValidationErrors, checkAuth } from './utils/index.js';
 import { UserController, PostController } from './controllers/index.js';
 
 app.use(cors({
-  origin: 'https://mern-blog-frontend-sand.vercel.app'
-}));
-
-app.options('*', cors({
   origin: 'https://mern-blog-frontend-sand.vercel.app',
   methods: 'GET, POST, PUT, DELETE, OPTIONS',
   allowedHeaders: 'Content-Type, Authorization'
 }));
+
+app.options('*', cors());
 
 mongoose
   .connect('mongodb+srv://bogdan2525:401250443Bog@cluster0.zrdkihy.mongodb.net/blog?retryWrites=true&w=majority&appName=Cluster0')
