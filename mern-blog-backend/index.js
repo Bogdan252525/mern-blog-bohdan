@@ -12,11 +12,11 @@ import { handleValidationErrors, checkAuth } from './utils/index.js';
 import { UserController, PostController } from './controllers/index.js';
 
 app.use(cors({
-  origin: 'https://www.mern-blog-frontend-sand.vercel.app'
+  origin: 'https://mern-blog-frontend-sand.vercel.app'
 }));
 
 app.options('*', cors({
-  origin: 'https://www.mern-blog-frontend-sand.vercel.app',
+  origin: 'https://mern-blog-frontend-sand.vercel.app',
   methods: 'GET, POST, PUT, DELETE, OPTIONS',
   allowedHeaders: 'Content-Type, Authorization'
 }));
