@@ -20,9 +20,9 @@ export const Registration = () => {
     formState: { errors, isValid },
   } = useForm({
     defaultValues: {
-      fullName: 'Jon Lee',
-      email: 'test@test.com',
-      password: '12345',
+      fullName: 'Вася Пупкин',
+      email: 'vasya@test.ru',
+      password: '1234',
     },
     mode: 'onChange',
   });
@@ -31,7 +31,7 @@ export const Registration = () => {
     const data = await dispatch(fetchRegister(values));
 
     if (!data.payload) {
-      return alert('Failed to register!');
+      return alert('Не удалось регистрироваться!');
     }
 
     if ('token' in data.payload) {
@@ -46,7 +46,7 @@ export const Registration = () => {
   return (
     <Paper classes={{ root: styles.root }}>
       <Typography classes={{ root: styles.title }} variant="h5">
-				Account creation
+        Создание аккаунта
       </Typography>
       <div className={styles.avatar}>
         <Avatar sx={{ width: 100, height: 100 }} />
@@ -55,16 +55,16 @@ export const Registration = () => {
         <TextField
           error={Boolean(errors.fullName?.message)}
           helperText={errors.fullName?.message}
-          {...register('fullName', { required: 'Please provide full name' })}
+          {...register('fullName', { required: 'Укажите полное имя' })}
           className={styles.field}
-          label="Full name"
+          label="Полное имя"
           fullWidth
         />
         <TextField
           error={Boolean(errors.email?.message)}
           helperText={errors.email?.message}
           type="email"
-          {...register('email', { required: 'Enter your email' })}
+          {...register('email', { required: 'Укажите почту' })}
           className={styles.field}
           label="E-Mail"
           fullWidth
@@ -73,13 +73,13 @@ export const Registration = () => {
           error={Boolean(errors.password?.message)}
           helperText={errors.password?.message}
           type="password"
-          {...register('password', { required: 'Enter your password' })}
+          {...register('password', { required: 'Укажите пароль' })}
           className={styles.field}
-          label="Password"
+          label="Пароль"
           fullWidth
         />
         <Button disabled={!isValid} type="submit" size="large" variant="contained" fullWidth>
-					Register
+          Зарегистрироваться
         </Button>
       </form>
     </Paper>

@@ -21,7 +21,7 @@ export const FullPost = () => {
       })
       .catch((err) => {
         console.warn(err);
-        alert('Error receiving article');
+        alert('Ошибка при получении статьи');
       });
   }, []);
 
@@ -34,7 +34,7 @@ export const FullPost = () => {
       <Post
         id={data._id}
         title={data.title}
-        imageUrl={data.imageUrl ? `https://mern-blog-backend-lilac.vercel.app${data.imageUrl}` : ''}
+        imageUrl={data.imageUrl ? `${process.env.REACT_APP_API_URL}${data.imageUrl}` : ''}
         // imageUrl="https://res.cloudinary.com/practicaldev/image/fetch/s--UnAfrEG8--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/icohm5g0axh9wjmu4oc3.png"
         user={data.user}
         createdAt={data.createdAt}
@@ -48,14 +48,14 @@ export const FullPost = () => {
         items={[
           {
             user: {
-              fullName: 'Jon Lee',
+              fullName: 'Вася Пупкин',
               avatarUrl: 'https://mui.com/static/images/avatar/1.jpg',
             },
-            text: 'This is a test comment 555555',
+            text: 'Это тестовый комментарий 555555',
           },
           {
             user: {
-              fullName: 'Loo Pi',
+              fullName: 'Иван Иванов',
               avatarUrl: 'https://mui.com/static/images/avatar/2.jpg',
             },
             text: 'When displaying three lines or more, the avatar is not aligned at the top. You should set the prop to align the avatar at the top',

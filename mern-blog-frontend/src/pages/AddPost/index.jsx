@@ -33,7 +33,7 @@ export const AddPost = () => {
       setImageUrl(data.url);
     } catch (err) {
       console.warn(err);
-      alert('Error uploading file!');
+      alert('Ошибка при загрузке файла!');
     }
   };
 
@@ -65,7 +65,7 @@ export const AddPost = () => {
       navigate(`/posts/${_id}`);
     } catch (err) {
       console.warn(err);
-      alert('Error while creating article!');
+      alert('Ошибка при создании статьи!');
     }
   };
 
@@ -81,7 +81,7 @@ export const AddPost = () => {
         })
         .catch((err) => {
           console.warn(err);
-          alert('Error receiving article!');
+          alert('Ошибка при получении статьи!');
         });
     }
   }, []);
@@ -91,7 +91,7 @@ export const AddPost = () => {
       spellChecker: false,
       maxHeight: '400px',
       autofocus: true,
-      placeholder: 'Enter text...',
+      placeholder: 'Введите текст...',
       status: false,
       autosave: {
         enabled: true,
@@ -108,17 +108,17 @@ export const AddPost = () => {
   return (
     <Paper style={{ padding: 30 }}>
       <Button onClick={() => inputFileRef.current.click()} variant="outlined" size="large">
-				Download preview
+        Загрузить превью
       </Button>
       <input ref={inputFileRef} type="file" onChange={handleChangeFile} hidden />
       {imageUrl && (
         <>
           <Button variant="contained" color="error" onClick={onClickRemoveImage}>
-						Delete
+            Удалить
           </Button>
           <img
             className={styles.image}
-            src={`https://mern-blog-backend-lilac.vercel.app${imageUrl}`}
+            src={`${process.env.REACT_APP_API_URL}${imageUrl}`}
             alt="Uploaded"
           />
         </>
@@ -126,9 +126,11 @@ export const AddPost = () => {
       <br />
       <br />
       <TextField
+        value={fields.title}
+        onChange={(e) => setFieldValue('title', e.target.value)}
         classes={{ root: styles.title }}
         variant="standard"
-        placeholder="Article title..."
+        placeholder="Заголовок статьи..."
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         fullWidth
@@ -138,16 +140,16 @@ export const AddPost = () => {
         onChange={(e) => setTags(e.target.value)}
         classes={{ root: styles.tags }}
         variant="standard"
-        placeholder="Tags"
+        placeholder="Тэги"
         fullWidth
       />
       <SimpleMDE className={styles.editor} value={text} onChange={onChange} options={options} />
       <div className={styles.buttons}>
         <Button onClick={onSubmit} size="large" variant="contained">
-          {isEditing ? 'Save' : 'Publish'}
+          {isEditing ? 'Сохранить' : 'Опубликовать'}
         </Button>
         <a href="/">
-          <Button size="large">Cancel</Button>
+          <Button size="large">Отмена</Button>
         </a>
       </div>
     </Paper>
