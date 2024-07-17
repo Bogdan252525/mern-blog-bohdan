@@ -11,13 +11,7 @@ import { handleValidationErrors, checkAuth } from './utils/index.js';
 
 import { UserController, PostController } from './controllers/index.js';
 
-app.use(cors({
-  origin: 'https://mern-blog-frontend-sand.vercel.app',
-  methods: 'GET, POST, PUT, DELETE, OPTIONS',
-  allowedHeaders: 'Content-Type, Authorization'
-}));
-
-app.options('*', cors());
+app.use(cors());
 
 mongoose
   .connect('mongodb+srv://bogdan2525:401250443Bog@cluster0.zrdkihy.mongodb.net/blog?retryWrites=true&w=majority&appName=Cluster0')
@@ -69,7 +63,7 @@ app.patch(
   PostController.update,
 );
 
-app.listen(4444, (err) => {
+app.listen(process.env.PORT || 4444, (err) => {
   if (err) {
     return console.log(err);
   }
