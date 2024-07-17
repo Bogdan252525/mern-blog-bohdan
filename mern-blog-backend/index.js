@@ -34,11 +34,11 @@ const upload = multer({ storage });
 
 app.use(express.json());
 app.use(cors(
-	// {
-	// 	origin: ["https://mern-blog-bohdan.vercel.app"],
-	// 	methods: ["POST", "GET"],
-	// 	credentials: true
-	// }
+	{
+		origin: ["https://mern-blog-bohdan-s85d.vercel.app"],
+		methods: ["POST", "GET"],
+		credentials: true
+	}
 ));
 app.use('/uploads', express.static('uploads'));
 
