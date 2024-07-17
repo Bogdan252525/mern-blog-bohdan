@@ -11,6 +11,14 @@ import { handleValidationErrors, checkAuth } from './utils/index.js';
 
 import { UserController, PostController } from './controllers/index.js';
 
+app.use(cors(
+	{
+		origin: ["https://mern-blog-bohdan-lwhq.vercel.app"],
+		methods: ["POST", "GET"],
+		credentials: true
+	}
+));
+
 mongoose
   .connect('mongodb+srv://bogdan2525:401250443Bog@cluster0.zrdkihy.mongodb.net/blog?retryWrites=true&w=majority&appName=Cluster0')
   .then(() => console.log('DB ok'))
@@ -33,13 +41,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 app.use(express.json());
-app.use(cors(
-	{
-		origin: ["https://mern-blog-bohdan.vercel.app"],
-		methods: ["POST", "GET"],
-		credentials: true
-	}
-));
+
 app.use('/uploads', express.static('uploads'));
 
 app.post('/auth/login', loginValidation, handleValidationErrors, UserController.login);
