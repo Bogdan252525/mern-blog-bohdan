@@ -118,7 +118,7 @@ export const AddPost = () => {
           </Button>
           <img
             className={styles.image}
-            src={`http://mern-blog-bohdan.vercel.app${imageUrl}`}
+            src={`https://mern-blog-bohdan.vercel.app${imageUrl}`}
             alt="Uploaded"
           />
         </>
