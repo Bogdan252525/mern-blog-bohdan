@@ -33,7 +33,13 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 app.use(express.json());
-app.use(cors());
+app.use(cors(
+	{
+		origin: ["https://mern-blog-bohdan-1whq.vercel.app"],
+		methods: ["POST", "GET"],
+		credentials: true
+	}
+));
 app.use('/uploads', express.static('uploads'));
 
 app.post('/auth/login', loginValidation, handleValidationErrors, UserController.login);
