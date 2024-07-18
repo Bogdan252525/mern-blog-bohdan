@@ -11,7 +11,7 @@ import { handleValidationErrors, checkAuth } from './utils/index.js';
 
 import { UserController, PostController } from './controllers/index.js';
 
-mongoose.set('strictQuery', true);
+mongoose.set('strictQuery', false);
 mongoose
   .connect('mongodb+srv://bogdan2525:401250443Bog@cluster0.zrdkihy.mongodb.net/blog?retryWrites=true&w=majority&appName=Cluster0', {
 		useNewUrlParser: true,
