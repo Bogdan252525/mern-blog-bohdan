@@ -31,7 +31,7 @@ const postsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    // Получение статей
+    // Getting articles
     [fetchPosts.pending]: (state) => {
       state.posts.items = [];
       state.posts.status = 'loading';
@@ -45,7 +45,7 @@ const postsSlice = createSlice({
       state.posts.status = 'error';
     },
 
-    // Получение тегов
+    // Retrieving tags
     [fetchTags.pending]: (state) => {
       state.tags.items = [];
       state.tags.status = 'loading';
@@ -59,7 +59,7 @@ const postsSlice = createSlice({
       state.tags.status = 'error';
     },
 
-    // Удаление статьи
+    // Deleting an article
     [fetchRemovePost.pending]: (state, action) => {
       state.posts.items = state.posts.items.filter((obj) => obj._id !== action.meta.arg);
     },

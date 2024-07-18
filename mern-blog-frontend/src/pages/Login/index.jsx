@@ -20,8 +20,8 @@ export const Login = () => {
     formState: { errors, isValid },
   } = useForm({
     defaultValues: {
-      email: 'test@test.ru',
-      password: '123',
+      email: 'test@test.com',
+      password: '12345',
     },
     mode: 'onChange',
   });
@@ -30,7 +30,7 @@ export const Login = () => {
     const data = await dispatch(fetchAuth(values));
 
     if (!data.payload) {
-      return alert('Не удалось авторизоваться!');
+      return alert('Failed to login!');
     }
 
     if ('token' in data.payload) {
@@ -45,7 +45,7 @@ export const Login = () => {
   return (
     <Paper classes={{ root: styles.root }}>
       <Typography classes={{ root: styles.title }} variant="h5">
-        Вход в аккаунт
+				Login
       </Typography>
       <form onSubmit={handleSubmit(onSubmit)}>
         <TextField
@@ -54,19 +54,19 @@ export const Login = () => {
           error={Boolean(errors.email?.message)}
           helperText={errors.email?.message}
           type="email"
-          {...register('email', { required: 'Укажите почту' })}
+          {...register('email', { required: 'Enter your email' })}
           fullWidth
         />
         <TextField
           className={styles.field}
-          label="Пароль"
+          label="Password"
           error={Boolean(errors.password?.message)}
           helperText={errors.password?.message}
-          {...register('password', { required: 'Укажите пароль' })}
+          {...register('password', { required: 'Enter your password' })}
           fullWidth
         />
         <Button disabled={!isValid} type="submit" size="large" variant="contained" fullWidth>
-          Войти
+          Login
         </Button>
       </form>
     </Paper>

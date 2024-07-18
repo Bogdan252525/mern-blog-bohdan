@@ -14,7 +14,7 @@ import { PostSkeleton } from './Skeleton';
 import { fetchRemovePost } from '../../redux/slices/posts';
 
 export const Post = ({
-  _id,
+  id,
   title,
   createdAt,
   imageUrl,
@@ -33,7 +33,7 @@ export const Post = ({
   }
 
   const onClickRemove = () => {
-    if (window.confirm('Вы действительно хотите удалить статью?')) {
+    if (window.confirm('Are you sure you want to delete this article?')) {
       dispatch(fetchRemovePost(id));
     }
   };
