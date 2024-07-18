@@ -11,8 +11,12 @@ import { handleValidationErrors, checkAuth } from './utils/index.js';
 
 import { UserController, PostController } from './controllers/index.js';
 
+mongoose.set('strictQuery', true);
 mongoose
-  .connect('mongodb+srv://bogdan2525:401250443Bog@cluster0.zrdkihy.mongodb.net/blog?retryWrites=true&w=majority&appName=Cluster0')
+  .connect('mongodb+srv://bogdan2525:401250443Bog@cluster0.zrdkihy.mongodb.net/blog?retryWrites=true&w=majority&appName=Cluster0', {
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+	})
   .then(() => console.log('DB ok'))
   .catch((err) => console.log('DB error', err));
 
